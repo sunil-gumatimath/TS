@@ -1,6 +1,6 @@
 # TypeScript Course - Learning the Hard Way
 
-A hands-on TypeScript learning project that covers fundamental concepts through practical examples.
+A hands-on TypeScript learning project that covers fundamental concepts through practical examples and exercises.
 
 ## 🚀 Prerequisites
 
@@ -23,32 +23,78 @@ npm install
 ```
 type-script-cource/
 ├── src/
-│   ├── index.ts          # Basic function with type annotations
-│   └── typesInTS.ts      # Type inference and annotations examples
-├── dist/                 # Compiled JavaScript output
+│   ├── index.ts              # Lesson 1: Basic function with type annotations
+│   ├── typesInTS.ts          # Lesson 2: Type inference and annotations
+│   └── union-and-any.ts      # Lesson 3: Union types and literal types
+├── dist/                     # Compiled JavaScript output
 ├── package.json
 ├── tsconfig.json
 └── README.md
 ```
 
-## 📚 What You'll Learn
+## 📚 Learning Path
 
-This project demonstrates:
+This project is structured as a progressive learning journey with three core lessons:
 
-### Basic Type Annotations
-- Function parameters and return types
+### Lesson 1: Basic Type Annotations (`index.ts`)
+
+Learn the fundamentals of TypeScript type annotations:
+
+- Function parameter type annotations
+- Function return type annotations
 - Variable type annotations
-- String, boolean, and union types
+- String type basics
+- Type safety in practice
 
-### Type Inference
-- Automatic type detection
-- Union types (`number | string`)
-- Type safety without explicit annotations
+**Key Concepts:**
 
-### Configuration
-- Modern TypeScript compiler settings
-- Strict type checking
-- Source maps and declarations
+```typescript
+function greet(person: string): string {
+    return ` Hello ${person} How you doing`
+}
+
+const username: string = 'Ted'
+console.log(greet(username));
+```
+
+### Lesson 2: Type Inference (`typesInTS.ts`)
+
+Understand how TypeScript automatically infers types:
+
+- Implicit type inference from values
+- Union types through conditional expressions
+- Type inference vs explicit annotations
+- Boolean type annotations
+- String type inference
+
+**Key Concepts:**
+
+```typescript
+let drink = 'coffee'                                    // inferred as string
+let cups = Math.random() > 0.5 ? 10 : '5'             // inferred as number | string
+let channelName = 'sunilted'                          // inferred as string
+let coffeeFlavour: string = 'Caramel'                 // explicit annotation
+let orderCoffee: boolean = true                       // explicit annotation
+```
+
+### Lesson 3: Union and Literal Types (`union-and-any.ts`)
+
+Master union types and literal type constraints:
+
+- Union types with multiple types (`number | string`)
+- Literal types for specific string values
+- Type narrowing with conditionals
+- Optional types (`string | undefined`)
+- Real-world use cases (API states, seat selections, etc.)
+
+**Key Concepts:**
+
+```typescript
+let sub: number | string = '1M'                                    // union type
+let apiRequest: 'pending' | 'success' | 'error' = 'pending'      // literal types
+let airLineSeat: 'aisle' | 'window-side' | 'middle' = 'middle'   // literal types
+let currentOrder: string | undefined;                             // optional type
+```
 
 ## 🚀 Running the Project
 
@@ -60,34 +106,13 @@ npm run dev
 npm start
 ```
 
-## 📝 Examples
-
-### Function with Type Annotations
-```typescript
-function greet(person: string): string {
-    return `Hello ${person} How you doing`;
-}
-```
-
-### Type Inference and Union Types
-```typescript
-let cups = Math.random() > 0.5 ? 10 : '5';  // number | string
-let channelName = 'sunilted';               // inferred as string
-let orderCoffee: boolean = true;            // explicit annotation
-```
-
 ## 🛠️ Development
 
 The project uses a strict TypeScript configuration with:
-- Strict mode enabled
-- Exact optional property types
-- Unchecked indexed access prevention
-- Modern ESNext target
 
-## 📄 License
-
-ISC License
-
-## 🤝 Contributing
-
-Feel free to submit issues and pull requests to improve the learning examples!
+- **Strict Mode**: Enables all strict type checking options
+- **Exact Optional Property Types**: Prevents implicit undefined in optional properties
+- **Unchecked Indexed Access**: Prevents unsafe index access
+- **Source Maps**: For debugging compiled code
+- **Declaration Files**: Generates `.d.ts` files for type information
+- **Modern Target**: Compiles to ESNext for modern JavaScript features
