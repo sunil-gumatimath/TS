@@ -1,22 +1,22 @@
-let sub : number | string = '1M'
+let sub: number | string = "1M";
 
-let apiRequest : 'pending' | 'success' | 'error' = 'pending'
+let apiRequest: "pending" | "success" | "error" = "pending";
 
-apiRequest = 'success'
+apiRequest = "success";
 
-let airLineSeat : 'aisle' | 'window-side' | 'middle' = 'middle'
+let airLineSeat: "aisle" | "window-side" | "middle" = "middle";
 
-airLineSeat = 'aisle'
+airLineSeat = "aisle";
 
-const orders = ['12', '11', '67', '28' , '42']
-let currentOrder : string | undefined;
+const orders = ["12", "11", "67", "28", "42"];
+let currentOrder: string | undefined;
 
-for(let order of orders){
-    if(order === '11'){
-        currentOrder = order
-        break
-    }
-    currentOrder = '11'
+for (let order of orders) {
+	if (order === "11") {
+		currentOrder = order;
+		break;
+	}
+	currentOrder = "11";
 }
 
-console.log((currentOrder));
+console.log(currentOrder);

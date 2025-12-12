@@ -1,17 +1,17 @@
 {
-  "name": "type-script-cource",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "bun dist/index.js",
-    "dev": "npx tsc"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "typescript": "^5.9.3"
-  }
+	"name": "type-script-cource",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"start": "bun dist/index.js",
+		"dev": "npx tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"devDependencies": {
+		"typescript": "^5.9.3"
+	}
 }

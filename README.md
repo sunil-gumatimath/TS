@@ -1,118 +1,93 @@
-# TypeScript Course - Learning the Hard Way
+# TypeScript Course – Learning the Hard Way
 
-A hands-on TypeScript learning project that covers fundamental concepts through practical examples and exercises.
+A small, hands-on TypeScript learning project that introduces core language features
+through four focused lessons. Each file in `src/` represents a step in the learning path.
 
-## 🚀 Prerequisites
+## Prerequisites
 
 - Node.js (v14 or higher)
-- npm or bun
+- npm (or another Node package manager)
+- [Bun](https://bun.sh/) if you want to use the existing `npm start` script
 
-## 📦 Installation
+## Installation
 
-```bash
-# Clone the repository
-git clone https://github.com/sunil-gumatimath/TS.git
-cd type-script-cource
+1. Clone the repository
+   - `git clone https://github.com/sunil-gumatimath/TS.git`
+   - `cd type-script-cource`
+2. Install dependencies
+   - `npm install`
 
-# Install dependencies
-npm install
-```
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 type-script-cource/
 ├── src/
 │   ├── index.ts              # Lesson 1: Basic function with type annotations
 │   ├── typesInTS.ts          # Lesson 2: Type inference and annotations
-│   └── union-and-any.ts      # Lesson 3: Union types and literal types
+│   ├── union-and-any.ts      # Lesson 3: Union and literal types
+│   └── typeNarrowing.ts      # Lesson 4: Type narrowing techniques
 ├── dist/                     # Compiled JavaScript output
 ├── package.json
 ├── tsconfig.json
 └── README.md
 ```
 
-## 📚 Learning Path
+## Learning Path (Keep Going Step by Step)
 
-This project is structured as a progressive learning journey with three core lessons:
+Work through the files in `src/` in order. Each lesson builds on the previous one.
 
-### Lesson 1: Basic Type Annotations (`index.ts`)
+### 1. Basic Type Annotations – `src/index.ts`
 
-Learn the fundamentals of TypeScript type annotations:
+Concepts you will practice:
 
-- Function parameter type annotations
-- Function return type annotations
-- Variable type annotations
-- String type basics
-- Type safety in practice
+- Adding type annotations to function parameters and return values
+- Declaring variables with explicit types
+- Seeing how TypeScript catches basic type errors
 
-**Key Concepts:**
+### 2. Type Inference – `src/typesInTS.ts`
 
-```typescript
-function greet(person: string): string {
-    return ` Hello ${person} How you doing`
-}
+Concepts you will practice:
 
-const username: string = 'Ted'
-console.log(greet(username));
-```
+- Letting TypeScript infer types from values
+- Understanding union types created by conditional expressions
+- Choosing when to rely on inference vs. explicit annotations
 
-### Lesson 2: Type Inference (`typesInTS.ts`)
+### 3. Union and Literal Types – `src/union-and-any.ts`
 
-Understand how TypeScript automatically infers types:
+Concepts you will practice:
 
-- Implicit type inference from values
-- Union types through conditional expressions
-- Type inference vs explicit annotations
-- Boolean type annotations
-- String type inference
+- Declaring union types (for example, `number | string`)
+- Using string literal types to limit allowed values
+- Modeling simple state (such as request status or seat selection)
 
-**Key Concepts:**
+### 4. Type Narrowing – `src/typeNarrowing.ts`
 
-```typescript
-let drink = 'coffee'                                    // inferred as string
-let cups = Math.random() > 0.5 ? 10 : '5'             // inferred as number | string
-let channelName = 'sunilted'                          // inferred as string
-let coffeeFlavour: string = 'Caramel'                 // explicit annotation
-let orderCoffee: boolean = true                       // explicit annotation
-```
+Concepts you will practice:
 
-### Lesson 3: Union and Literal Types (`union-and-any.ts`)
+- Narrowing union types with `typeof` checks
+- Using truthiness checks for optional values
+- Narrowing using equality checks and control flow
+- Getting a taste of discriminated unions and more advanced patterns
 
-Master union types and literal type constraints:
+## How to Run the Code
 
-- Union types with multiple types (`number | string`)
-- Literal types for specific string values
-- Type narrowing with conditionals
-- Optional types (`string | undefined`)
-- Real-world use cases (API states, seat selections, etc.)
+Compile the TypeScript sources to JavaScript:
 
-**Key Concepts:**
+- `npm run dev`
 
-```typescript
-let sub: number | string = '1M'                                    // union type
-let apiRequest: 'pending' | 'success' | 'error' = 'pending'      // literal types
-let airLineSeat: 'aisle' | 'window-side' | 'middle' = 'middle'   // literal types
-let currentOrder: string | undefined;                             // optional type
-```
+This will output compiled files into the `dist/` folder.
 
-## 🚀 Running the Project
+Then run the compiled code (using Bun as configured in `package.json`):
 
-```bash
-# Compile TypeScript to JavaScript
-npm run dev
+- `npm start`
 
-# Run the compiled code (requires bun)
-npm start
-```
+You can modify any of the lesson files in `src/`, re-run `npm run dev`, and then
+`npm start` again to see how your changes behave.
 
-## 🛠️ Development
+## Next Steps
 
-The project uses a strict TypeScript configuration with:
-
-- **Strict Mode**: Enables all strict type checking options
-- **Exact Optional Property Types**: Prevents implicit undefined in optional properties
-- **Unchecked Indexed Access**: Prevents unsafe index access
-- **Source Maps**: For debugging compiled code
-- **Declaration Files**: Generates `.d.ts` files for type information
-- **Modern Target**: Compiles to ESNext for modern JavaScript features
+- Add your own examples to each lesson file to test your understanding.
+- Create new files for additional topics (interfaces, generics, enums, etc.) and
+  extend this learning path.
+- Experiment with stricter compiler options in `tsconfig.json` to see how they
+  affect your code.
