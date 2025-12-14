@@ -1,13 +1,13 @@
 # TypeScript Course – Learning the Hard Way
 
 A small, hands-on TypeScript learning project that introduces core language features
-through four focused lessons. Each file in `src/` represents a step in the learning path.
+through focused lessons. Each file in `src/` represents a step in the learning path.
 
 ## Prerequisites
 
-- Node.js (v14 or higher)
+- Node.js (v14 or higher; v18+ recommended)
 - npm (or another Node package manager)
-- [Bun](https://bun.sh/) if you want to use the existing `npm start` script
+- Optional: [Bun](https://bun.sh/) if you want to use the existing `npm start` script
 
 ## Installation
 
@@ -25,7 +25,9 @@ type-script-cource/
 │   ├── index.ts              # Lesson 1: Basic function with type annotations
 │   ├── typesInTS.ts          # Lesson 2: Type inference and annotations
 │   ├── union-and-any.ts      # Lesson 3: Union and literal types
-│   └── typeNarrowing.ts      # Lesson 4: Type narrowing techniques
+│   ├── typeNarrowing.ts      # Lesson 4: Type narrowing techniques
+│   ├── interfaceTS.ts        # Lesson 5: Interfaces and type aliases
+│   └── moreTypes.ts          # Lesson 6: Assertions, unknown, never (and DOM)
 ├── dist/                     # Compiled JavaScript output
 ├── package.json
 ├── tsconfig.json
@@ -69,25 +71,65 @@ Concepts you will practice:
 - Narrowing using equality checks and control flow
 - Getting a taste of discriminated unions and more advanced patterns
 
+### 5. Interfaces and Type Aliases – `src/interfaceTS.ts`
+
+Concepts you will practice:
+
+- Defining type aliases and interfaces
+- Implementing interfaces in classes
+- Working with string literal unions for constrained values
+
+### 6. Assertions, `unknown`, and `never` – `src/moreTypes.ts`
+
+Concepts you will practice:
+
+- Using type assertions (`as`) safely
+- Understanding `any` vs `unknown` and applying type guards
+- Using `never` for exhaustive checks, infinite loops, and error throws
+- DOM-specific types (e.g., `document.getElementById`) and when to enable the `dom` lib
+
 ## How to Run the Code
 
-Compile the TypeScript sources to JavaScript:
+### Option A — Compile everything, then run
 
-- `npm run dev`
+1. Compile the TypeScript sources to JavaScript:
+   - `npm run dev`
+   This outputs compiled files into the `dist/` folder.
+2. Run the compiled code (Bun is configured in `package.json`):
+   - `npm start`
+   If you don't use Bun, run with Node:
+   - `node dist/index.js`
 
-This will output compiled files into the `dist/` folder.
+### Option B — Run a single lesson (recommended while practicing)
 
-Then run the compiled code (using Bun as configured in `package.json`):
+Some lesson files are intentionally unfinished for practice and may not compile as a whole project.
+To focus on one file at a time:
 
-- `npm start`
+1. Compile just one file (replace the filename as needed):
+   - `npx tsc --outDir dist src/index.ts`
+2. Run it with Node or Bun:
+   - `node dist/index.js`
+   - or `bun dist/index.js`
 
-You can modify any of the lesson files in `src/`, re-run `npm run dev`, and then
-`npm start` again to see how your changes behave.
+Tip: swap `src/index.ts` for any lesson file, e.g. `src/moreTypes.ts`.
+
+## Troubleshooting / Notes
+
+- Unfinished exercises: A few files contain placeholders or incomplete snippets for practice.
+  If `npm run dev` fails, either comment out unfinished parts or use Option B to compile a single file.
+- DOM types (browser-only): If you see `Cannot find name 'document'`, enable the DOM lib by adding to `tsconfig.json`:
+  ```json
+  {
+    "compilerOptions": {
+      "lib": ["esnext", "dom"]
+    }
+  }
+  ```
+  Alternatively, comment out DOM lines when running in a Node-only environment.
+- Node vs Bun: `npm start` uses Bun by default. If you don't have Bun, run compiled files with `node`.
 
 ## Next Steps
 
 - Add your own examples to each lesson file to test your understanding.
-- Create new files for additional topics (interfaces, generics, enums, etc.) and
-  extend this learning path.
-- Experiment with stricter compiler options in `tsconfig.json` to see how they
-  affect your code.
+- Create new files for additional topics (interfaces, generics, enums, etc.) and extend this learning path.
+- Experiment with stricter compiler options in `tsconfig.json` to see how they affect your code.
