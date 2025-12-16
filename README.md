@@ -5,9 +5,8 @@ through focused lessons. Each file in `src/` represents a step in the learning p
 
 ## Prerequisites
 
-- Node.js (v14 or higher; v18+ recommended)
-- npm (or another Node package manager)
-- Optional: [Bun](https://bun.sh/) if you want to use the existing `npm start` script
+- [Bun](https://bun.sh/) (recommended; used for installing deps and running scripts)
+- Node.js (v14 or higher; v18+ recommended) if you prefer to run compiled JS with Node
 
 ## Installation
 
@@ -15,7 +14,8 @@ through focused lessons. Each file in `src/` represents a step in the learning p
    - `git clone https://github.com/sunil-gumatimath/TS.git`
    - `cd type-script-cource`
 2. Install dependencies
-   - `npm install`
+   - With Bun (recommended): `bun install`
+   - Or with npm: `npm install`
 
 ## Project Structure
 
@@ -33,6 +33,17 @@ type-script-cource/
 ├── tsconfig.json
 └── README.md
 ```
+
+## Scripts & Tooling
+
+- `bun run dev` – runs the local TypeScript compiler (`npx tsc` via the `dev` script in `package.json`), compiling everything from `src/` into `dist/`.
+- `bun start` – runs the compiled entry file `dist/index.js` using Bun (via the `start` script in `package.json`).
+- If you prefer npm instead of Bun, you can use:
+  - `npm run dev`
+  - `npm start` (this still calls `bun dist/index.js` internally)
+- Tooling:
+  - TypeScript: `^5.9.3` (strict mode, `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, etc. are enabled in `tsconfig.json`).
+  - Prettier: `^3.7.4` (optional code formatter; you can run it manually or add your own `format` script in `package.json`).
 
 ## Learning Path (Keep Going Step by Step)
 
@@ -93,12 +104,12 @@ Concepts you will practice:
 ### Option A — Compile everything, then run
 
 1. Compile the TypeScript sources to JavaScript:
-   - `npm run dev`
+   - With Bun (recommended): `bun run dev`
+   - With npm: `npm run dev`
    This outputs compiled files into the `dist/` folder.
-2. Run the compiled code (Bun is configured in `package.json`):
-   - `npm start`
-   If you don't use Bun, run with Node:
-   - `node dist/index.js`
+2. Run the compiled code:
+   - With Bun: `bun start` (uses the `start` script)
+   - Directly with Node: `node dist/index.js`
 
 ### Option B — Run a single lesson (recommended while practicing)
 
@@ -107,9 +118,9 @@ To focus on one file at a time:
 
 1. Compile just one file (replace the filename as needed):
    - `npx tsc --outDir dist src/index.ts`
-2. Run it with Node or Bun:
-   - `node dist/index.js`
-   - or `bun dist/index.js`
+2. Run it with Bun or Node:
+   - With Bun: `bun dist/index.js`
+   - With Node: `node dist/index.js`
 
 Tip: swap `src/index.ts` for any lesson file, e.g. `src/moreTypes.ts`.
 
@@ -117,7 +128,8 @@ Tip: swap `src/index.ts` for any lesson file, e.g. `src/moreTypes.ts`.
 
 - Unfinished exercises: A few files contain placeholders or incomplete snippets for practice.
   If `npm run dev` fails, either comment out unfinished parts or use Option B to compile a single file.
-- DOM types (browser-only): If you see `Cannot find name 'document'`, enable the DOM lib by adding to `tsconfig.json`:
+- DOM types (browser-only): If you see `Cannot find name 'document'`, enable the DOM lib in `tsconfig.json`.
+  Inside `compilerOptions`, add or update the `lib` setting to include `dom`, for example:
   ```json
   {
     "compilerOptions": {
@@ -125,7 +137,8 @@ Tip: swap `src/index.ts` for any lesson file, e.g. `src/moreTypes.ts`.
     }
   }
   ```
-  Alternatively, comment out DOM lines when running in a Node-only environment.
+  (Keep the rest of your existing options like `strict`, `module`, etc.)
+  Alternatively, comment out DOM-specific lines (such as `document.getElementById(...)`) when running in a Node-only environment.
 - Node vs Bun: `npm start` uses Bun by default. If you don't have Bun, run compiled files with `node`.
 
 ## Next Steps
